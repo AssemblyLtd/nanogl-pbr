@@ -2,7 +2,7 @@
 #ifndef _H_SPECULAR_IBL_
 #define _H_SPECULAR_IBL_
 
-{{ require( "./octwrap-decode.glsl" )() }}
+{{ require( "./octwrap-decode-octant.glsl" )() }}
 {{ require( "./decode-rgbe.glsl" )() }}
 
 const vec2 _IBL_UVM = vec2(
@@ -13,7 +13,7 @@ const vec2 _IBL_UVM = vec2(
 vec3 SpecularIBL( sampler2D tEnv, vec3 skyDir, float roughness)
 {
 
-  vec2 uvA = octwrapDecode( skyDir );
+  vec2 uvA = octwrapDecodeOctant( skyDir );
 
   float r7   = 7.0*roughness;
   float frac = fract(r7);
